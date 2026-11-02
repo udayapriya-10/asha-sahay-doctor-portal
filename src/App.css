@@ -1,16 +1,25 @@
-
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
 
-/* =========================
-   GLOBAL
-========================= */
+/* =====================================================
+   ASHA SAHAY — GLOBAL STYLES
+===================================================== */
 
 :root {
   font-family: "Inter", sans-serif;
-  color: #1e293b;
+  color: #183b36;
   background: #f6faf8;
   font-synthesis: none;
   font-weight: 400;
+
+  --primary: #167d68;
+  --primary-dark: #105c4c;
+  --primary-light: #e5f5ee;
+  --text-dark: #183b36;
+  --text-medium: #526b62;
+  --text-muted: #82918f;
+  --border: #e5eee9;
+  --white: #ffffff;
+  --page-bg: #f6faf8;
 }
 
 * {
@@ -27,7 +36,8 @@ body,
 
 body {
   min-width: 320px;
-  background: #f6faf8;
+  background: var(--page-bg);
+  color: var(--text-dark);
   overflow-x: hidden;
 }
 
@@ -47,6 +57,11 @@ button:disabled {
   opacity: 0.6;
 }
 
+img,
+svg {
+  flex-shrink: 0;
+}
+
 .app,
 .main-content,
 .page-content,
@@ -56,11 +71,396 @@ button:disabled {
   max-width: 100%;
 }
 
-/* =========================
+/* =====================================================
+   LOGIN PAGE
+===================================================== */
+
+.login-page {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  min-height: 100vh;
+  padding: 40px 20px;
+
+  background:
+    radial-gradient(circle at 10% 10%, #e0f3e9 0, transparent 35%),
+    radial-gradient(circle at 90% 90%, #e8f5ef 0, transparent 35%),
+    #f6faf8;
+
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.login-background-shape {
+  position: absolute;
+  z-index: -1;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.login-shape-one {
+  top: -180px;
+  left: -140px;
+  width: 420px;
+  height: 420px;
+  background: rgba(22, 125, 104, 0.08);
+}
+
+.login-shape-two {
+  right: -160px;
+  bottom: -190px;
+  width: 480px;
+  height: 480px;
+  background: rgba(22, 125, 104, 0.07);
+}
+
+.login-card {
+  position: relative;
+  z-index: 1;
+
+  width: 100%;
+  max-width: 620px;
+  padding: 42px;
+
+  background: #ffffff;
+  border: 1px solid #e5eee9;
+  border-radius: 24px;
+
+  box-shadow: 0 24px 70px rgba(24, 59, 54, 0.10);
+}
+
+/* Login brand */
+
+.login-brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+
+  margin-bottom: 34px;
+  text-align: left;
+}
+
+.login-brand-icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+
+  width: 58px;
+  height: 58px;
+
+  color: #167d68;
+  background: #e5f5ee;
+  border-radius: 16px;
+}
+
+.login-brand h1 {
+  margin: 0;
+
+  color: #123b32 !important;
+  -webkit-text-fill-color: #123b32;
+
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.7px;
+}
+
+.login-brand p {
+  margin: 6px 0 0;
+
+  color: #526b62 !important;
+  -webkit-text-fill-color: #526b62;
+
+  font-size: 12px;
+}
+
+/* Login heading */
+
+.login-heading {
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+.login-eyebrow {
+  display: inline-block;
+  margin-bottom: 12px;
+
+  color: #12634f !important;
+  -webkit-text-fill-color: #12634f;
+
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.login-heading h2 {
+  margin: 0;
+
+  color: #123b32 !important;
+  -webkit-text-fill-color: #123b32;
+
+  font-size: 27px;
+  font-weight: 800;
+  letter-spacing: -0.8px;
+}
+
+.login-heading p {
+  max-width: 430px;
+  margin: 12px auto 0;
+
+  color: #526b62 !important;
+  -webkit-text-fill-color: #526b62;
+
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/* Doctor / ASHA role selector */
+
+.login-role-selector {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+
+  margin-bottom: 26px;
+}
+
+.login-role-card {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  align-items: center;
+  column-gap: 12px;
+  row-gap: 5px;
+
+  width: 100%;
+  min-width: 0;
+  min-height: 94px;
+  padding: 16px;
+
+  color: #173d32 !important;
+  background: #f8fbf9;
+  border: 1px solid #dce9e2;
+  border-radius: 14px;
+
+  text-align: left;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.login-role-card:hover {
+  background: #eff8f3;
+  border-color: #a8cfba;
+  transform: translateY(-1px);
+}
+
+.login-role-card.selected {
+  background: #e0f2e8 !important;
+  border: 2px solid #167d68 !important;
+  box-shadow: 0 0 0 3px rgba(22, 125, 104, 0.08);
+}
+
+.login-role-icon {
+  display: grid;
+  place-items: center;
+  grid-row: span 2;
+
+  width: 44px;
+  height: 44px;
+
+  color: #167d68;
+  background: #e5f5ee;
+  border-radius: 11px;
+}
+
+.login-role-card.selected .login-role-icon {
+  color: #ffffff;
+  background: #167d68;
+}
+
+.login-role-card strong {
+  display: block;
+
+  color: #173d32 !important;
+  -webkit-text-fill-color: #173d32;
+
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.4;
+  opacity: 1;
+}
+
+.login-role-card span:not(.unused) {
+  display: block;
+
+  color: #426052 !important;
+  -webkit-text-fill-color: #426052;
+
+  font-size: 10px;
+  line-height: 1.5;
+  opacity: 1;
+}
+
+/* Login form */
+
+.login-form {
+  display: grid;
+  gap: 18px;
+}
+
+.login-form > label {
+  display: grid;
+  gap: 9px;
+
+  color: #183b36 !important;
+  -webkit-text-fill-color: #183b36;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.login-form input {
+  width: 100%;
+  min-width: 0;
+  height: 48px;
+  padding: 0 14px;
+
+  color: #183b36 !important;
+  -webkit-text-fill-color: #183b36;
+
+  background: #ffffff !important;
+  border: 1px solid #cbded3;
+  border-radius: 10px;
+
+  outline: none;
+  font-size: 13px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.login-form input:focus {
+  border-color: #167d68;
+  box-shadow: 0 0 0 3px rgba(22, 125, 104, 0.10);
+}
+
+.login-form input::placeholder {
+  color: #758b80 !important;
+  -webkit-text-fill-color: #758b80;
+  opacity: 1;
+}
+
+.login-password-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.login-password-wrapper input {
+  padding-right: 48px;
+}
+
+.login-password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  transform: translateY(-50%);
+
+  display: grid;
+  place-items: center;
+
+  width: 34px;
+  height: 34px;
+
+  color: #526b62;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+}
+
+.login-password-toggle:hover {
+  color: #167d68;
+  background: #f0f7f3;
+}
+
+/* Sign in button */
+
+.login-submit-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+
+  width: 100%;
+  min-height: 49px;
+  margin-top: 4px;
+  padding: 13px 18px;
+
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff;
+
+  background: #126b56 !important;
+  border: none;
+  border-radius: 10px;
+
+  font-size: 13px;
+  font-weight: 800;
+
+  box-shadow: 0 5px 14px rgba(18, 107, 86, 0.16);
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.login-submit-button:hover {
+  background: #0b5745 !important;
+  transform: translateY(-1px);
+}
+
+.login-submit-button:active {
+  transform: translateY(0);
+}
+
+.login-demo-note {
+  margin-top: 18px;
+  padding: 12px 14px;
+
+  color: #365b4b !important;
+  -webkit-text-fill-color: #365b4b;
+
+  background: #edf7f1;
+  border: 1px solid #d9ebdf;
+  border-radius: 10px;
+
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.login-demo-note strong {
+  color: #214c3a !important;
+  -webkit-text-fill-color: #214c3a;
+}
+
+.login-footer {
+  margin-top: 24px;
+
+  color: #6d8277 !important;
+  -webkit-text-fill-color: #6d8277;
+
+  text-align: center;
+  font-size: 10px;
+}
+
+/* =====================================================
    APP LAYOUT
-   Matches App.jsx:
-   .app > .sidebar + .main-content
-========================= */
+===================================================== */
 
 .app {
   display: flex;
@@ -69,9 +469,9 @@ button:disabled {
   overflow-x: clip;
 }
 
-/* =========================
+/* =====================================================
    SIDEBAR
-========================= */
+===================================================== */
 
 .sidebar {
   position: fixed;
@@ -137,6 +537,7 @@ button:disabled {
 .sidebar-label,
 .nav-label {
   padding: 0 12px 12px;
+
   color: #9aa7a5;
   font-size: 10px;
   font-weight: 700;
@@ -144,8 +545,10 @@ button:disabled {
 }
 
 .sidebar-nav {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 6px;
+  width: 100%;
 }
 
 .nav-item {
@@ -156,6 +559,7 @@ button:disabled {
   gap: 12px;
 
   width: 100%;
+  min-height: 44px;
   padding: 12px;
 
   color: #687b79;
@@ -167,7 +571,9 @@ button:disabled {
   font-size: 13px;
   font-weight: 500;
 
-  transition: background 0.2s ease, color 0.2s ease;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
 }
 
 .nav-item:hover {
@@ -235,20 +641,21 @@ button:disabled {
   font-size: 10px;
 }
 
-/* =========================
+/* =====================================================
    MAIN CONTENT
-========================= */
+===================================================== */
 
 .main-content {
+  display: flex;
   flex: 1;
+  flex-direction: column;
+
   width: calc(100% - 250px);
   min-width: 0;
   min-height: 100vh;
   margin-left: 250px;
 
-  display: flex;
-  flex-direction: column;
-
+  background: #f6faf8;
   overflow-x: clip;
 }
 
@@ -259,9 +666,9 @@ button:disabled {
   padding: 30px 32px;
 }
 
-/* =========================
+/* =====================================================
    TOPBAR
-========================= */
+===================================================== */
 
 .topbar {
   display: flex;
@@ -271,7 +678,7 @@ button:disabled {
 
   width: 100%;
   min-width: 0;
-  height: 70px;
+  min-height: 70px;
   padding: 0 32px;
 
   background: #ffffff;
@@ -376,14 +783,37 @@ button:disabled {
   border: 1px solid #ffffff;
 }
 
+.logout-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+  padding: 9px 12px;
+
+  color: #617572;
+  background: #ffffff;
+  border: 1px solid #e8edf1;
+  border-radius: 9px;
+
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.logout-button:hover {
+  color: #b54747;
+  background: #fff7f7;
+  border-color: #f0d5d5;
+}
+
 .menu-button,
 .sidebar-close {
   display: none;
 }
 
-/* =========================
+/* =====================================================
    PAGE HEADINGS
-========================= */
+===================================================== */
 
 .page-heading,
 .page-header {
@@ -434,16 +864,16 @@ button:disabled {
   font-size: 11px;
 }
 
-/* =========================
+/* =====================================================
    DASHBOARD
-========================= */
+===================================================== */
 
 .dashboard-page {
   width: 100%;
   min-width: 0;
 }
 
-/* Dashboard welcome section */
+/* Welcome section */
 
 .dashboard-welcome {
   display: flex;
@@ -497,7 +927,7 @@ button:disabled {
   white-space: nowrap;
 }
 
-/* Dashboard stats */
+/* Statistics */
 
 .stats-grid {
   display: grid;
@@ -509,7 +939,9 @@ button:disabled {
 
 .dashboard-stats .stat-card {
   min-width: 0;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .dashboard-stats .stat-card:hover {
@@ -584,7 +1016,7 @@ button:disabled {
   line-height: 1.5;
 }
 
-/* Dashboard cards */
+/* Cards */
 
 .content-card,
 .dashboard-card {
@@ -619,7 +1051,7 @@ button:disabled {
   font-size: 11px;
 }
 
-/* Needs Attention */
+/* Needs attention */
 
 .dashboard-attention-card {
   border: 1px solid #e5eee9;
@@ -656,7 +1088,9 @@ button:disabled {
   border: 1px solid #e8f0ec;
   border-radius: 12px;
 
-  transition: background 0.2s ease, border-color 0.2s ease,
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
     transform 0.2s ease;
 }
 
@@ -727,17 +1161,15 @@ button:disabled {
   text-align: center;
 }
 
-/* Dashboard buttons */
-
 .dashboard-view-all {
   display: inline-flex;
   align-items: center;
   gap: 7px;
 }
 
-/* =========================
+/* =====================================================
    TABLES
-========================= */
+===================================================== */
 
 .table-wrap,
 .table-container {
@@ -824,9 +1256,9 @@ tbody tr:hover {
   text-align: center;
 }
 
-/* =========================
+/* =====================================================
    QUICK ACTIONS
-========================= */
+===================================================== */
 
 .quick-actions {
   display: grid;
@@ -849,7 +1281,9 @@ tbody tr:hover {
 
   text-align: left;
 
-  transition: background 0.2s ease, border-color 0.2s ease,
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
     transform 0.2s ease;
 }
 
@@ -876,9 +1310,9 @@ tbody tr:hover {
   font-size: 10px;
 }
 
-/* =========================
+/* =====================================================
    SEARCH
-========================= */
+===================================================== */
 
 .search-box {
   display: flex;
@@ -911,9 +1345,9 @@ tbody tr:hover {
   color: #a0adaa;
 }
 
-/* =========================
+/* =====================================================
    BUTTONS
-========================= */
+===================================================== */
 
 .text-button {
   display: inline-flex;
@@ -976,9 +1410,9 @@ tbody tr:hover {
   background: #f8fafc;
 }
 
-/* =========================
+/* =====================================================
    MODALS
-========================= */
+===================================================== */
 
 .modal-backdrop,
 .modal-overlay {
@@ -1089,9 +1523,9 @@ tbody tr:hover {
   line-height: 1.5;
 }
 
-/* =========================
+/* =====================================================
    SYMPTOM REPORTS
-========================= */
+===================================================== */
 
 .symptom-tags {
   display: flex;
@@ -1116,9 +1550,9 @@ tbody tr:hover {
   margin-top: 8px;
 }
 
-/* =========================
+/* =====================================================
    REFERRALS
-========================= */
+===================================================== */
 
 .referrals-page {
   flex: 1;
@@ -1288,9 +1722,9 @@ tbody tr:hover {
   font-size: 12px;
 }
 
-/* =========================
+/* =====================================================
    PLACEHOLDER PAGES
-========================= */
+===================================================== */
 
 .placeholder-card {
   padding: 55px 25px;
@@ -1325,9 +1759,222 @@ tbody tr:hover {
   line-height: 1.7;
 }
 
-/* =========================
+/* =====================================================
+   COMMUNITY HEALTH UPDATES
+===================================================== */
+
+.community-health-page {
+  color: #1f2937;
+}
+
+.community-health-page h1,
+.community-health-page h2,
+.community-health-page h3,
+.community-health-page strong {
+  color: #123b32;
+}
+
+.community-health-page p,
+.community-health-page span,
+.community-health-page small {
+  color: #475569;
+}
+
+.community-health-page .status-badge,
+.community-health-page .category-badge {
+  color: #166534;
+}
+
+/* Add Community Health Update modal */
+
+.health-update-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  background: rgba(20, 45, 37, 0.5);
+  backdrop-filter: blur(4px);
+}
+
+.health-update-modal {
+  width: 100%;
+  max-width: 620px;
+  max-height: 90vh;
+  overflow-y: auto;
+
+  padding: 30px;
+
+  color: #1f2937;
+  background: #ffffff;
+  border: 1px solid #e5eee9;
+  border-radius: 20px;
+
+  box-shadow: 0 24px 70px rgba(20, 45, 37, 0.2);
+}
+
+.health-update-modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+
+  margin-bottom: 26px;
+  padding-bottom: 20px;
+
+  border-bottom: 1px solid #edf2ef;
+}
+
+.health-update-modal-title {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.health-update-modal-icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+
+  width: 46px;
+  height: 46px;
+
+  color: #167d68;
+  background: #e5f5ee;
+  border-radius: 13px;
+}
+
+.health-update-modal-header h2 {
+  margin: 2px 0 7px;
+
+  color: #183b36;
+  font-size: 21px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.health-update-modal-header p {
+  margin: 0;
+
+  color: #526b62;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.health-update-form {
+  display: grid;
+  gap: 20px;
+}
+
+.health-update-form .form-group {
+  display: grid;
+  gap: 8px;
+}
+
+.health-update-form label {
+  color: #38534c;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.health-update-form input,
+.health-update-form select,
+.health-update-form textarea {
+  width: 100%;
+  min-width: 0;
+
+  padding: 12px 14px;
+
+  color: #294641;
+  background: #fbfdfc;
+  border: 1px solid #dfeae5;
+  border-radius: 10px;
+
+  outline: none;
+  font-size: 13px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.health-update-form input:focus,
+.health-update-form select:focus,
+.health-update-form textarea:focus {
+  background: #ffffff;
+  border-color: #16836c;
+  box-shadow: 0 0 0 3px rgba(22, 131, 108, 0.1);
+}
+
+.health-update-form textarea {
+  min-height: 130px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.health-update-form input::placeholder,
+.health-update-form textarea::placeholder {
+  color: #758b80;
+  opacity: 1;
+}
+
+.health-update-form .form-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.health-update-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+
+  margin-top: 8px;
+  padding-top: 20px;
+
+  border-top: 1px solid #edf2ef;
+}
+
+.health-update-modal-footer button {
+  min-width: 120px;
+  margin: 0;
+  padding: 12px 18px;
+
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.health-update-modal-footer .cancel-button {
+  color: #52645e;
+  background: #ffffff;
+  border: 1px solid #dfe8e3;
+}
+
+.health-update-modal-footer .cancel-button:hover {
+  background: #f6faf8;
+}
+
+.health-update-modal-footer .publish-button {
+  color: #ffffff !important;
+  background: #167d68;
+  border: 1px solid #167d68;
+  box-shadow: 0 4px 10px rgba(22, 125, 104, 0.15);
+}
+
+.health-update-modal-footer .publish-button:hover {
+  background: #116653;
+}
+
+/* =====================================================
    FOOTER
-========================= */
+===================================================== */
 
 .app-footer {
   display: flex;
@@ -1337,14 +1984,15 @@ tbody tr:hover {
   padding: 16px 32px;
 
   color: #a0adaa;
+  background: #ffffff;
   border-top: 1px solid #e8edf1;
 
   font-size: 10px;
 }
 
-/* =========================
-   RESPONSIVE: TABLET
-========================= */
+/* =====================================================
+   RESPONSIVE — TABLET
+===================================================== */
 
 @media (max-width: 1100px) {
   .stats-grid {
@@ -1358,11 +2006,19 @@ tbody tr:hover {
   .dashboard-welcome h1 {
     font-size: 25px;
   }
+
+  .page-content {
+    padding: 26px 24px;
+  }
+
+  .topbar {
+    padding: 0 24px;
+  }
 }
 
-/* =========================
-   RESPONSIVE: MOBILE
-========================= */
+/* =====================================================
+   RESPONSIVE — MOBILE
+===================================================== */
 
 @media (max-width: 760px) {
   .sidebar {
@@ -1420,6 +2076,20 @@ tbody tr:hover {
   .topbar-title {
     gap: 6px;
     font-size: 12px;
+  }
+
+  .topbar-right {
+    gap: 7px;
+  }
+
+  .logout-button {
+    padding: 8px;
+    font-size: 0;
+  }
+
+  .logout-button svg {
+    width: 17px;
+    height: 17px;
   }
 
   .page-content {
@@ -1524,11 +2194,42 @@ tbody tr:hover {
   .modal-card {
     padding: 20px;
   }
+
+  /* Login mobile */
+
+  .login-page {
+    padding: 20px 14px;
+  }
+
+  .login-card {
+    padding: 28px 20px;
+    border-radius: 18px;
+  }
+
+  .login-brand {
+    margin-bottom: 28px;
+  }
+
+  .login-brand h1 {
+    font-size: 21px;
+  }
+
+  .login-heading h2 {
+    font-size: 23px;
+  }
+
+  .login-role-selector {
+    grid-template-columns: 1fr;
+  }
+
+  .login-role-card {
+    min-height: 78px;
+  }
 }
 
-/* =========================
+/* =====================================================
    VERY SMALL SCREENS
-========================= */
+===================================================== */
 
 @media (max-width: 420px) {
   .stats-grid {
@@ -1549,302 +2250,21 @@ tbody tr:hover {
     height: 25px;
   }
 
-  .topbar-title span:first-child {
-    display: none;
-  }
-
+  .topbar-title span:first-child,
   .topbar-divider {
     display: none;
   }
-}
-/* =========================
-   ADD COMMUNITY HEALTH UPDATE MODAL
-========================= */
 
-.health-update-modal-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 1200;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 20px;
-
-  background: rgba(20, 45, 37, 0.5);
-  backdrop-filter: blur(4px);
-}
-
-.health-update-modal {
-  width: 100%;
-  max-width: 620px;
-  max-height: 90vh;
-  overflow-y: auto;
-
-  padding: 30px;
-
-  background: #ffffff;
-  border: 1px solid #e5eee9;
-  border-radius: 20px;
-
-  box-shadow: 0 24px 70px rgba(20, 45, 37, 0.2);
-}
-
-.health-update-modal-header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 16px;
-
-  margin-bottom: 26px;
-  padding-bottom: 20px;
-
-  border-bottom: 1px solid #edf2ef;
-}
-
-.health-update-modal-title {
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-}
-
-.health-update-modal-icon {
-  display: grid;
-  place-items: center;
-  flex-shrink: 0;
-
-  width: 46px;
-  height: 46px;
-
-  color: #167d68;
-  background: #e5f5ee;
-  border-radius: 13px;
-}
-
-.health-update-modal-header h2 {
-  margin: 2px 0 7px;
-
-  color: #183b36;
-  font-size: 21px;
-  font-weight: 800;
-  letter-spacing: -0.5px;
-}
-
-.health-update-modal-header p {
-  margin: 0;
-
-  color: #82918f;
-  font-size: 12px;
-  line-height: 1.6;
-}
-
-.health-update-form {
-  display: grid;
-  gap: 20px;
-}
-
-.health-update-form .form-group {
-  display: grid;
-  gap: 8px;
-}
-
-.health-update-form label {
-  color: #38534c;
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.health-update-form input,
-.health-update-form select,
-.health-update-form textarea {
-  width: 100%;
-  min-width: 0;
-
-  padding: 12px 14px;
-
-  color: #294641;
-  background: #fbfdfc;
-  border: 1px solid #dfeae5;
-  border-radius: 10px;
-
-  outline: none;
-  font-size: 13px;
-
-  transition: border-color 0.2s ease, box-shadow 0.2s ease,
-    background 0.2s ease;
-}
-
-.health-update-form input:focus,
-.health-update-form select:focus,
-.health-update-form textarea:focus {
-  background: #ffffff;
-  border-color: #16836c;
-  box-shadow: 0 0 0 3px rgba(22, 131, 108, 0.1);
-}
-
-.health-update-form textarea {
-  min-height: 130px;
-  resize: vertical;
-  line-height: 1.6;
-}
-
-.health-update-form input::placeholder,
-.health-update-form textarea::placeholder {
-  color: #a2afaa;
-}
-
-.health-update-form .form-row {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
-}
-
-.health-update-modal-footer {
-  display: flex;
-  justify-content: flex-end;
-  gap: 12px;
-
-  margin-top: 8px;
-  padding-top: 20px;
-
-  border-top: 1px solid #edf2ef;
-}
-
-.health-update-modal-footer button {
-  min-width: 120px;
-  margin: 0;
-  padding: 12px 18px;
-
-  border-radius: 10px;
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.health-update-modal-footer .cancel-button {
-  color: #52645e;
-  background: #ffffff;
-  border: 1px solid #dfe8e3;
-}
-
-.health-update-modal-footer .cancel-button:hover {
-  background: #f6faf8;
-}
-
-.health-update-modal-footer .publish-button {
-  color: #ffffff;
-  background: #167d68;
-  border: 1px solid #167d68;
-  box-shadow: 0 4px 10px rgba(22, 125, 104, 0.15);
-}
-
-.health-update-modal-footer .publish-button:hover {
-  background: #116653;
-}
-
-@media (max-width: 600px) {
-  .health-update-modal-overlay {
-    align-items: flex-end;
-    padding: 10px;
+  .login-card {
+    padding: 24px 16px;
   }
 
-  .health-update-modal {
-    max-height: 92vh;
-    padding: 22px 18px;
-    border-radius: 18px;
+  .login-brand-icon {
+    width: 48px;
+    height: 48px;
   }
 
-  .health-update-modal-header h2 {
-    font-size: 18px;
+  .login-heading h2 {
+    font-size: 21px;
   }
-
-  .health-update-form .form-row {
-    grid-template-columns: 1fr;
-  }
-
-  .health-update-modal-footer {
-    flex-direction: column-reverse;
-  }
-
-  .health-update-modal-footer button {
-    width: 100%;
-  }
-}
-/* Make Health Updates text easier to read */
-.health-update-modal,
-.health-update-modal p,
-.health-update-modal label,
-.health-update-modal input,
-.health-update-modal textarea,
-.health-update-modal select {
-  color: #1f2937 !important;
-}
-
-.health-update-modal input::placeholder,
-.health-update-modal textarea::placeholder {
-  color: #6b7280 !important;
-  opacity: 1;
-}
-
-/* Make input fields clearer */
-.health-update-modal input,
-.health-update-modal textarea,
-.health-update-modal select {
-  background-color: #ffffff !important;
-  border: 1px solid #cbd5e1 !important;
-}
-
-/* Make the form labels darker */
-.health-update-modal label {
-  font-weight: 600;
-}
-/* Community Health Updates — improve text visibility */
-.community-health-page,
-.community-health-page * {
-  color: #1f2937;
-}
-
-.community-health-page h1,
-.community-health-page h2,
-.community-health-page h3,
-.community-health-page strong {
-  color: #123b32;
-}
-
-.community-health-page p,
-.community-health-page span,
-.community-health-page small {
-  color: #475569;
-}
-
-/* Keep category badges readable */
-.community-health-page .status-badge,
-.community-health-page .category-badge {
-  color: #166534;
-}
-
-/* Add Update form — force readable text */
-.health-update-modal,
-.health-update-modal * {
-  color: #1f2937;
-}
-
-.health-update-modal input,
-.health-update-modal textarea,
-.health-update-modal select {
-  color: #111827 !important;
-  -webkit-text-fill-color: #111827 !important;
-  background: #ffffff !important;
-}
-
-.health-update-modal input::placeholder,
-.health-update-modal textarea::placeholder {
-  color: #64748b !important;
-  -webkit-text-fill-color: #64748b !important;
-  opacity: 1 !important;
-}
-
-.health-update-modal .publish-button {
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important;
 }
